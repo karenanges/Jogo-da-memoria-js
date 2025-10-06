@@ -1,0 +1,153 @@
+/* RESET E BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffe6f0, #ffccf2);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.sky {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+.cloud {
+  position: absolute;
+  background: #fff0f5;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatCloud 60s linear infinite;
+}
+
+.cloud1 { width: 150px; height: 80px; top:50px; left:-200px; }
+.cloud2 { width: 200px; height: 100px; top:120px; left:-250px; }
+.cloud3 { width: 100px; height: 60px; top:200px; left:-150px; }
+
+@keyframes floatCloud {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(120vw); }
+}
+
+.container {
+  text-align: center;
+  padding: 20px 40px;
+  background-color: #fff0f5;
+  border-radius: 30px;
+  box-shadow: 0 12px 30px rgba(255,105,180,0.4);
+  max-width: 750px;
+  width: 90%;
+  margin: 50px auto;
+}
+
+h1 {
+  font-size: 40px;
+  color: #d6336c;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px #ffb6c1;
+  animation: tituloAnim 2s infinite alternate;
+}
+
+@keyframes tituloAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.tabuleiro {
+  display: grid;
+  grid-gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.carta {
+  width: 100px;
+  height: 100px;
+  background-color: #fff0f5;
+  border-radius: 2xl;
+  border: 3px solid #ff69b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  cursor: pointer;
+  transition: transform 0.4s, background-color 0.4s, box-shadow 0.4s;
+  user-select: none;
+  perspective: 1000px;
+}
+
+.carta:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff69b4;
+}
+
+.carta.flipped {
+  background-color: #ffc0cb;
+  transform: rotateY(180deg);
+}
+
+.carta.matched {
+  animation: brilhar 0.8s infinite;
+}
+
+@keyframes brilhar {
+  0%,100% { box-shadow: 0 0 5px #ff69b4; }
+  50% { box-shadow: 0 0 25px #ff69b4; }
+}
+
+.status {
+  font-size: 22px;
+  color: #d6336c;
+  margin-bottom: 10px;
+  animation: piscar 1.5s infinite;
+}
+
+@keyframes piscar {
+  0%,50%,100% { color: #d6336c; }
+  25%,75% { color: #ff69b4; }
+}
+
+.timer {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.btn-reset {
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  background-color: #ffb6c1;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px #d6336c;
+}
+
+.btn-reset:hover {
+  background-color: #ff69b4;
+  transform: scale(1.15) rotate(-2deg);
+  box-shadow: 0 0 25px #ff69b4;
+}
+
+/* Confetti Canvas */
+#confetti {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1000;
+}
